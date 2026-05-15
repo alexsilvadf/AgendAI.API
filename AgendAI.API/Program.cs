@@ -5,6 +5,7 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.ConfigureCloudHosting();
 builder.AddAgendAIConfiguration();
 
 builder.Services.AddInfrastructure(builder.Configuration);
@@ -43,13 +44,16 @@ await DatabaseInitializer.InitializeAsync(app.Services, app.Environment);
 
 app.UseAgendAIExceptionHandling();
 
-if (app.Environment.IsDevelopment())
+var enableSwagger = app.Environment.IsDevelopment()
+    || app.Configuration.GetValue<bool>("Swagger:Enabled");
+
+if (enableSwagger)
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.UseCloudHosting();
 
 app.UseCors(CorsExtensions.AngularPolicyName);
 
@@ -57,5 +61,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapGet("/", () => Results.Redirect("/api/v1/health"));
 
 app.Run();
