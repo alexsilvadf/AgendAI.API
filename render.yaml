@@ -12,4 +12,6 @@ services:
       - key: Jwt__Secret
         sync: false
       - key: Cors__AllowedOrigins__0
-        sync: false
+        value: https://agendai-fawn.vercel.app
+      - key: Cors__AllowedOrigins__1
+        value: http://localhost:4200

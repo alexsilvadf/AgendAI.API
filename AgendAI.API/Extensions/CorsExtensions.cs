@@ -10,7 +10,11 @@ public static class CorsExtensions
     {
         var allowedOrigins = configuration
             .GetSection("Cors:AllowedOrigins")
-            .Get<string[]>() ?? [];
+            .Get<string[]>()
+            ?.Where(origin => !string.IsNullOrWhiteSpace(origin))
+            .Select(origin => origin.TrimEnd('/'))
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .ToArray() ?? [];
 
         services.AddCors(options =>
         {
