@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.AddAgendAIConfiguration();
 
 builder.Services.AddAgendAICors(builder.Configuration);
+builder.Services.AddAgendAIExceptionHandling();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -12,6 +13,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.UseAgendAIExceptionHandling();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
