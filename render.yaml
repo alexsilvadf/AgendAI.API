@@ -7,10 +7,14 @@ services:
     envVars:
       - key: ASPNETCORE_ENVIRONMENT
         value: Production
-      - key: ConnectionStrings__DefaultConnection
-        sync: false
+      - key: Data__UseInMemory
+        value: "true"
       - key: Jwt__Secret
-        sync: false
+        generateValue: true
+      - key: Jwt__Issuer
+        value: AgendAI
+      - key: Jwt__Audience
+        value: AgendAI.App
       - key: Cors__AllowedOrigins__0
         value: https://agendai-fawn.vercel.app
       - key: Cors__AllowedOrigins__1

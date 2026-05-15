@@ -13,6 +13,9 @@ public sealed class AuthService(AgendAiDbContext db, JwtTokenGenerator tokenGene
 {
     public async Task<LoginResponse> LoginAsync(LoginRequest request, CancellationToken cancellationToken = default)
     {
+        if (string.IsNullOrWhiteSpace(request.Usuario) || string.IsNullOrWhiteSpace(request.Senha))
+            throw new UnauthorizedAccessException("Usuário ou senha inválidos.");
+
         var login = request.Usuario.Trim().ToLowerInvariant();
 
         var usuario = await db.Usuarios
@@ -22,7 +25,17 @@ public sealed class AuthService(AgendAiDbContext db, JwtTokenGenerator tokenGene
         if (usuario is null || !usuario.Ativo)
             throw new UnauthorizedAccessException("Usuário ou senha inválidos.");
 
-        if (!BCrypt.Net.BCrypt.Verify(request.Senha, usuario.SenhaHash))
+        var senhaValida = false;
+        try
+        {
+            senhaValida = BCrypt.Net.BCrypt.Verify(request.Senha, usuario.SenhaHash);
+        }
+        catch (Exception)
+        {
+            throw new UnauthorizedAccessException("Usuário ou senha inválidos.");
+        }
+
+        if (!senhaValida)
             throw new UnauthorizedAccessException("Usuário ou senha inválidos.");
 
         var (token, expiresIn) = tokenGenerator.Generate(usuario);

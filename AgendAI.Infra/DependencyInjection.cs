@@ -17,13 +17,30 @@ public static class DependencyInjection
         this IServiceCollection services,
         IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString("DefaultConnection")
-            ?? throw new InvalidOperationException("Connection string 'DefaultConnection' não configurada.");
+        if (DataOptions.UseInMemory(configuration))
+        {
+            services.AddDbContext<AgendAiDbContext>(options =>
+                options.UseInMemoryDatabase(DataOptions.InMemoryDatabaseName));
+        }
+        else
+        {
+            var connectionString = configuration.GetConnectionString("DefaultConnection")
+                ?? throw new InvalidOperationException("Connection string 'DefaultConnection' não configurada.");
 
-        services.AddDbContext<AgendAiDbContext>(options =>
-            options.UseSqlServer(connectionString));
+            services.AddDbContext<AgendAiDbContext>(options =>
+                options.UseSqlServer(connectionString));
+        }
 
-        services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.SectionName));
+        services.AddOptions<JwtSettings>()
+            .Bind(configuration.GetSection(JwtSettings.SectionName))
+            .Validate(
+                jwt => !string.IsNullOrWhiteSpace(jwt.Secret) && jwt.Secret.Length >= 32,
+                "Jwt:Secret deve ter no mínimo 32 caracteres (configure Jwt__Secret no ambiente).")
+            .Validate(
+                jwt => !string.IsNullOrWhiteSpace(jwt.Issuer) && !string.IsNullOrWhiteSpace(jwt.Audience),
+                "Jwt:Issuer e Jwt:Audience são obrigatórios.")
+            .ValidateOnStart();
+
         services.AddSingleton<JwtTokenGenerator>();
 
         services.AddScoped<IAuthService, AuthService>();
