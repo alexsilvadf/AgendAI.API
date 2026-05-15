@@ -1,0 +1,92 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Projetos\\AgendAI\\AgendAI.API\\AgendAI.API\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8FB518BF-ADD4-46B6-B9DC-7DB459516694}|AgendAI.CrossCutting\\AgendAI.CrossCutting.csproj|c:\\projetos\\agendai\\agendai.api\\agendai.api\\agendai.crosscutting\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FB518BF-ADD4-46B6-B9DC-7DB459516694}|AgendAI.CrossCutting\\AgendAI.CrossCutting.csproj|solutionrelative:agendai.crosscutting\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DAEDECAE-2601-4980-ADE1-6B84AE0CC3E6}|AgendAI.Infra\\AgendAI.Infra.csproj|c:\\projetos\\agendai\\agendai.api\\agendai.api\\agendai.infra\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DAEDECAE-2601-4980-ADE1-6B84AE0CC3E6}|AgendAI.Infra\\AgendAI.Infra.csproj|solutionrelative:agendai.infra\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB9BC6EE-E15D-4F6D-881D-C2CEC7355298}|AgendAI.Domain\\AgendAI.Domain.csproj|c:\\projetos\\agendai\\agendai.api\\agendai.api\\agendai.domain\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB9BC6EE-E15D-4F6D-881D-C2CEC7355298}|AgendAI.Domain\\AgendAI.Domain.csproj|solutionrelative:agendai.domain\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{34E8A635-B8D5-4015-BB9A-8AAC479E47BB}|AgendAI.Application\\AgendAI.Application.csproj|c:\\projetos\\agendai\\agendai.api\\agendai.api\\agendai.application\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{34E8A635-B8D5-4015-BB9A-8AAC479E47BB}|AgendAI.Application\\AgendAI.Application.csproj|solutionrelative:agendai.application\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{6324226f-61b6-4f28-92ee-18d4b5fe1e48}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Projetos\\AgendAI\\AgendAI.API\\AgendAI.API\\AgendAI.CrossCutting\\Class1.cs",
+              "RelativeDocumentMoniker": "AgendAI.CrossCutting\\Class1.cs",
+              "ToolTip": "C:\\Projetos\\AgendAI\\AgendAI.API\\AgendAI.API\\AgendAI.CrossCutting\\Class1.cs",
+              "RelativeToolTip": "AgendAI.CrossCutting\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-15T17:05:31.34Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Projetos\\AgendAI\\AgendAI.API\\AgendAI.API\\AgendAI.Infra\\Class1.cs",
+              "RelativeDocumentMoniker": "AgendAI.Infra\\Class1.cs",
+              "ToolTip": "C:\\Projetos\\AgendAI\\AgendAI.API\\AgendAI.API\\AgendAI.Infra\\Class1.cs",
+              "RelativeToolTip": "AgendAI.Infra\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-15T17:04:32.825Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Projetos\\AgendAI\\AgendAI.API\\AgendAI.API\\AgendAI.Domain\\Class1.cs",
+              "RelativeDocumentMoniker": "AgendAI.Domain\\Class1.cs",
+              "ToolTip": "C:\\Projetos\\AgendAI\\AgendAI.API\\AgendAI.API\\AgendAI.Domain\\Class1.cs",
+              "RelativeToolTip": "AgendAI.Domain\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-15T17:03:41.672Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Projetos\\AgendAI\\AgendAI.API\\AgendAI.API\\AgendAI.Application\\Class1.cs",
+              "RelativeDocumentMoniker": "AgendAI.Application\\Class1.cs",
+              "ToolTip": "C:\\Projetos\\AgendAI\\AgendAI.API\\AgendAI.API\\AgendAI.Application\\Class1.cs",
+              "RelativeToolTip": "AgendAI.Application\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-15T17:00:39.378Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
