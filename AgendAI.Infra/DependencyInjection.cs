@@ -1,4 +1,3 @@
-using System.Text;
 using AgendAI.Application.Abstractions;
 using AgendAI.Infra.Persistence;
 using AgendAI.Infra.Security;
@@ -7,7 +6,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
+using Microsoft.Extensions.Options;
 
 namespace AgendAI.Infra;
 
@@ -31,17 +30,10 @@ public static class DependencyInjection
                 options.UseSqlServer(connectionString));
         }
 
-        services.AddOptions<JwtSettings>()
-            .Bind(configuration.GetSection(JwtSettings.SectionName))
-            .Validate(
-                jwt => !string.IsNullOrWhiteSpace(jwt.Secret) && jwt.Secret.Length >= 32,
-                "Jwt:Secret deve ter no mínimo 32 caracteres (configure Jwt__Secret no ambiente).")
-            .Validate(
-                jwt => !string.IsNullOrWhiteSpace(jwt.Issuer) && !string.IsNullOrWhiteSpace(jwt.Audience),
-                "Jwt:Issuer e Jwt:Audience são obrigatórios.")
-            .ValidateOnStart();
+        JwtSettingsConfiguration.Register(services, configuration);
 
         services.AddSingleton<JwtTokenGenerator>();
+        services.AddSingleton<IConfigureOptions<JwtBearerOptions>, ConfigureJwtBearerOptions>();
 
         services.AddScoped<IAuthService, AuthService>();
         services.AddScoped<IAgendaService, AgendaService>();
@@ -52,23 +44,8 @@ public static class DependencyInjection
         services.AddScoped<IAtendimentoService, AtendimentoService>();
         services.AddScoped<IFinanceiroService, FinanceiroService>();
 
-        var jwt = configuration.GetSection(JwtSettings.SectionName).Get<JwtSettings>()
-            ?? throw new InvalidOperationException("Configuração Jwt não encontrada.");
-
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer(options =>
-            {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = jwt.Issuer,
-                    ValidAudience = jwt.Audience,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwt.Secret))
-                };
-            });
+            .AddJwtBearer();
 
         services.AddAuthorization();
 

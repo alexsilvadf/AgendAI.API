@@ -9,6 +9,7 @@ services:
         value: Production
       - key: Data__UseInMemory
         value: "true"
+      # Opcional no modo in-memory: app usa fallback se vazio. Obrigatório com SQL Server.
       - key: Jwt__Secret
         generateValue: true
       - key: Jwt__Issuer
